@@ -153,6 +153,8 @@ Author: Alexander Mattheis
                 string += LATEX.RECURSION.HIRSCHBERG_FORWARD;
         else if (algorithmName === ALGORITHMS.NEEDLEMAN_WUNSCH)
             string += LATEX.RECURSION.NEEDLEMAN_WUNSCH;
+        else if (algorithmName === ALGORITHMS.SEMI_GLOBAL)
+            string += LATEX.RECURSION.SEMI_GLOBAL;
         else
             string += LATEX.RECURSION.SMITH_WATERMAN;
 

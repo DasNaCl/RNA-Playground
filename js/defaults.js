@@ -47,6 +47,7 @@ var ALGORITHMS = {  // contains a list of algorithms with an own javascript-file
     HIRSCHBERG: "hirschberg",
     ITERATIVE_REFINMENT: "iterative_refinement",
     NEEDLEMAN_WUNSCH: "needleman_wunsch",
+    SEMI_GLOBAL: "semi_global",
     NEIGHBOUR_JOINING: "neighbour_joining",
     NONE: "none",  // this is not an algorithm :)
     NOTREDAME_HIGGINS_HERINGA: "notredame_higgins_heringa",
@@ -294,6 +295,13 @@ var LATEX = {
         "D_{i,j-1} 		& + & s(-,b_j)" +
         "\\end{cases}",
 
+        SEMI_GLOBAL:
+        "\\begin{cases}" +
+        "D_{i-1,j-1}   & + & s(a_i,b_j)     \\\\" +
+        "D_{i-1,j}     & + & s(a_i,-)       \\\\" +
+        "D_{i,j-1}     & + & s(-,b_j)" +
+        "\\end{cases}",
+
         SMITH_WATERMAN:
         "\\begin{cases}" +
         "S_{i-1,j-1}    & + & s(a_i,b_j)    \\\\" +
@@ -519,8 +527,8 @@ var ALIGNMENT_DEFAULTS = {
     SEQUENCE_2: "AACG",  // Hint: UPPERCASE letters!
 
     FUNCTION: {
-        GAP: -2,
-        MATCH: 1,
+        GAP: -1,
+        MATCH: 2,
         MISMATCH: -1
     }
 };
@@ -684,7 +692,7 @@ var CLUSTER_NAMES =
 
 var EMPTY_ALIGNMENT = [SYMBOLS.EMPTY, SYMBOLS.EMPTY, SYMBOLS.EMPTY];
 
-var GLOBAL_ALGORITHMS = [ALGORITHMS.GOTOH, ALGORITHMS.HIRSCHBERG, ALGORITHMS.NEEDLEMAN_WUNSCH, ALGORITHMS.WATERMAN_SMITH_BEYER];
+var GLOBAL_ALGORITHMS = [ALGORITHMS.GOTOH, ALGORITHMS.HIRSCHBERG, ALGORITHMS.NEEDLEMAN_WUNSCH, ALGORITHMS.SEMI_GLOBAL, ALGORITHMS.WATERMAN_SMITH_BEYER];
 var LOCAL_ALGORITHMS = [ALGORITHMS.ARSLAN_EGECIOGLU_PEVZNER, ALGORITHMS.GOTOH_LOCAL, ALGORITHMS.SMITH_WATERMAN];
 var MULTI_SEQUENCE_ALGORITHMS = [ALGORITHMS.FENG_DOOLITTLE, ALGORITHMS.ITERATIVE_REFINMENT, ALGORITHMS.NOTREDAME_HIGGINS_HERINGA];
 
@@ -712,7 +720,7 @@ var SVG_ARROW_ALGORITHMS = [ALGORITHMS.GOTOH, ALGORITHMS.GOTOH_LOCAL, ALGORITHMS
  */
 var TABLE_INITIAL_HIGHLIGHT_ALGORITHMS =
     [ALGORITHMS.GOTOH, ALGORITHMS.GOTOH_LOCAL,
-        ALGORITHMS.NEEDLEMAN_WUNSCH, ALGORITHMS.SMITH_WATERMAN, ALGORITHMS.WATERMAN_SMITH_BEYER];
+        ALGORITHMS.NEEDLEMAN_WUNSCH, ALGORITHMS.SEMI_GLOBAL, ALGORITHMS.SMITH_WATERMAN, ALGORITHMS.WATERMAN_SMITH_BEYER];
 
 /**
  * Algorithms which displaying a phylogenetic tree.
